@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response, stream_with_context
+from flask import Flask, request, jsonify, Response, stream_with_context, send_file
 from dotenv import load_dotenv
 import anthropic
 import pdfplumber
@@ -46,6 +46,20 @@ def build_system_prompt():
     else:
         _cached_system_prompt = base
     return _cached_system_prompt
+
+
+PUBLIC_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "public")
+
+
+@app.route("/")
+def index():
+    with open(os.path.join(PUBLIC_DIR, "index.html"), encoding="utf-8") as f:
+        return f.read(), 200, {"Content-Type": "text/html; charset=utf-8"}
+
+
+@app.route("/logo.png")
+def serve_logo():
+    return send_file(os.path.join(PUBLIC_DIR, "logo.png"), mimetype="image/png")
 
 
 @app.route("/chat", methods=["POST"])

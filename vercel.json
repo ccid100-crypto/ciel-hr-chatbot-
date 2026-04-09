@@ -1,6 +1,13 @@
 {
-  "rewrites": [
-    { "source": "/chat", "destination": "/api/index" },
-    { "source": "/hr-docs", "destination": "/api/index" }
+  "functions": {
+    "api/index.py": {
+      "includeFiles": "public/**"
+    }
+  },
+  "routes": [
+    { "src": "/", "dest": "/api/index" },
+    { "src": "/logo.png", "dest": "/api/index" },
+    { "src": "/chat", "dest": "/api/index" },
+    { "src": "/hr-docs", "dest": "/api/index" }
   ]
 }
