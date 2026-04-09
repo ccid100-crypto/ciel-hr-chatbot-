@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/chat", "destination": "/api/index" },
+    { "source": "/hr-docs", "destination": "/api/index" }
+  ]
+}

@@ -1,0 +1,4 @@
+flask
+anthropic
+pdfplumber
+python-dotenv
